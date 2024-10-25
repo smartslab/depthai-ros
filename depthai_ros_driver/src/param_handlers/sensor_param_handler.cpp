@@ -75,6 +75,18 @@ void SensorParamHandler::declareParams(std::shared_ptr<dai::node::MonoCamera> mo
     }
     monoCam->setImageOrientation(
         utils::getValFromMap(declareAndLogParam<std::string>("i_sensor_img_orientation", "AUTO"), dai_nodes::sensor_helpers::cameraImageOrientationMap));
+    if(declareAndLogParam<bool>("i_set_auto_exposure_limit", false)) {
+        monoCam->initialControl.setAutoExposureLimit(declareAndLogParam<int>("i_auto_exposure_limit", 1000));
+    }
+    if(declareAndLogParam("i_set_sharpness", false)) {
+        monoCam->initialControl.setSharpness(declareAndLogParam<int>("i_sharpness", 1));
+    }
+    if(declareAndLogParam("i_set_chroma_denoise", false)) {
+        monoCam->initialControl.setChromaDenoise(declareAndLogParam<int>("i_chroma_denoise", 1));
+    }
+    if(declareAndLogParam("i_set_luma_denoise", false)) {
+        monoCam->initialControl.setLumaDenoise(declareAndLogParam<int>("i_luma_denoise", 1));
+    }
 }
 
 void SensorParamHandler::declareParams(std::shared_ptr<dai::node::ColorCamera> colorCam, dai_nodes::sensor_helpers::ImageSensor sensor, bool publish) {
@@ -166,6 +178,18 @@ void SensorParamHandler::declareParams(std::shared_ptr<dai::node::ColorCamera> c
     }
     colorCam->setImageOrientation(
         utils::getValFromMap(declareAndLogParam<std::string>("i_sensor_img_orientation", "AUTO"), dai_nodes::sensor_helpers::cameraImageOrientationMap));
+    if(declareAndLogParam<bool>("i_set_auto_exposure_limit", false)) {
+        colorCam->initialControl.setAutoExposureLimit(declareAndLogParam<int>("i_auto_exposure_limit", 1000));
+    }
+    if(declareAndLogParam("i_set_sharpness", false)) {
+        colorCam->initialControl.setSharpness(declareAndLogParam<int>("i_sharpness", 1));
+    }
+    if(declareAndLogParam("i_set_chroma_denoise", false)) {
+        colorCam->initialControl.setChromaDenoise(declareAndLogParam<int>("i_chroma_denoise", 1));
+    }
+    if(declareAndLogParam("i_set_luma_denoise", false)) {
+        colorCam->initialControl.setLumaDenoise(declareAndLogParam<int>("i_luma_denoise", 1));
+    }
 }
 dai::CameraControl SensorParamHandler::setRuntimeParams(parametersConfig& config) {
     dai::CameraControl ctrl;
