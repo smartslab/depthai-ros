@@ -113,6 +113,7 @@ dai_add_node(yolov4_spatial_node src/yolov4_spatial_publisher.cpp)
 dai_add_node(feature_tracker src/feature_tracker_publisher.cpp)
 
 
+
 target_compile_definitions(mobilenet_node PRIVATE BLOB_NAME="${mobilenet_blob_name}")
 target_compile_definitions(yolov4_spatial_node PRIVATE BLOB_NAME="${tiny_yolo_v4_blob_name}")
 target_compile_definitions(stereo_inertial_node PRIVATE BLOB_NAME="${tiny_yolo_v4_blob_name}")

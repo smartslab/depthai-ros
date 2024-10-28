@@ -27,7 +27,7 @@
     <arg name="manualExposure"        default="false"/>
     <arg name="expTime"               default="20000"/>
     <arg name="sensIso"               default="800" />
-
+    
     <arg name="enableSpatialDetection" default="true" />
     <arg name="syncNN"                 default="true" />
     <arg name="detectionClassesCount"  default="80"   />
@@ -55,7 +55,7 @@
     <arg name="enableFloodLight"      default="false"/>
     <arg name="dotProjectormA"        default="200.0"/>
     <arg name="floodLightmA"          default="200.0"/>
-    <arg name="enableRviz"            default="true"/>
+    <arg name="enableRviz"            default="false"/>
     <arg name="enableMarkerPublish"   default="false" />
 
     <arg name="enableRosBaseTimeUpdate" default="false" />  <!-- Used to handle when ROS time shifts and steady_clock does not -->
@@ -147,6 +147,7 @@
     </node>
 
 
+    
     <node if="$(eval arg('enableMarkerPublish') == true)" type="markerPublisher.py" name="markerPublisher" pkg="depthai_examples">
         <remap from="spatialDetections" to="stereo_inertial_publisher/color/yolov4_Spatial_detections"/>
         <remap from="spatialDetectionMarkers" to="stereo_inertial_publisher/color/spatialDetectionMarkers"/>
