@@ -29,10 +29,29 @@
             </visual>
         </link>
 
+        <link name="dvl_link">
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <mesh filename="package://depthai_descriptions/urdf/models/WL-11007-1_DVL.stl" />
+                </geometry>
+                <material name="mat">
+                    <color rgba="${r} ${g} ${b} ${a}"/>
+                </material>
+            </visual>
+        </link>
+        
+        
         <joint name="${camera_name}_model_origin_joint" type="fixed">
             <parent link="${base_frame}"/>
             <child link="${camera_name}_model_origin"/>
             <origin xyz="0 0 0" rpy="1.5708 0 1.5708" />
+        </joint>
+        
+        <joint name="oakd-dvl-joint" type="fixed">
+            <parent link="${base_frame}"/>
+            <child link="dvl_link"/>
+            <origin xyz="-0.035 0 -0.35" rpy="3.14159 0 0" />
         </joint>
 
 
